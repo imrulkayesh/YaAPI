@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BACKBONE.Core.Dtos
+{
+    public class S_DIVISION_DTO
+    {
+        public string DIVISION_ID { get; set; }
+        public string DIVISION_NAME { get; set; }
+    }
+}

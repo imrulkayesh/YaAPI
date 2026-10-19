@@ -1,0 +1,55 @@
+# Build folders
+bin/
+obj/
+
+# VS Code
+.vscode/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+
+# Publish output
+out/
+wwwroot/lib/
+
+# Rider / JetBrains IDE
+.idea/
+
+# Visual Studio
+.vs/
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Entity Framework Migrations (optional - keep if you want)
+#migrations/
+
+# Secrets
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+BACKBONE.APP/UserImages/
+

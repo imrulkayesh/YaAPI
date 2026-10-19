@@ -1,0 +1,113 @@
+-- CRUD Operations Table and Stored Procedures
+-- Developer: Sheikh Asad Quadir
+
+-- Sample table for CRUD operations
+CREATE TABLE SAMPLE_DATA (
+    ID NUMBER PRIMARY KEY,
+    NAME VARCHAR2(100) NOT NULL,
+    DESCRIPTION VARCHAR2(500),
+    CREATED_DATE DATE DEFAULT SYSDATE,
+    UPDATED_DATE DATE DEFAULT SYSDATE
+);
+
+-- Sequence for ID
+CREATE SEQUENCE SEQ_SAMPLE_DATA_ID
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE
+    NOCYCLE;
+
+-- Trigger to auto-increment ID
+CREATE OR REPLACE TRIGGER TRG_SAMPLE_DATA_ID
+    BEFORE INSERT ON SAMPLE_DATA
+    FOR EACH ROW
+BEGIN
+    SELECT SEQ_SAMPLE_DATA_ID.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+/
+
+-- Stored Procedure to INSERT data
+CREATE OR REPLACE PROCEDURE SP_INSERT_SAMPLE_DATA (
+    p_name IN VARCHAR2,
+    p_description IN VARCHAR2,
+    p_id OUT NUMBER
+)
+AS
+BEGIN
+    INSERT INTO SAMPLE_DATA (NAME, DESCRIPTION)
+    VALUES (p_name, p_description)
+    RETURNING ID INTO p_id;
+    
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RAISE;
+END;
+/
+
+-- Stored Procedure to UPDATE data
+CREATE OR REPLACE PROCEDURE SP_UPDATE_SAMPLE_DATA (
+    p_id IN NUMBER,
+    p_name IN VARCHAR2,
+    p_description IN VARCHAR2
+)
+AS
+BEGIN
+    UPDATE SAMPLE_DATA
+    SET NAME = p_name,
+        DESCRIPTION = p_description,
+        UPDATED_DATE = SYSDATE
+    WHERE ID = p_id;
+    
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RAISE;
+END;
+/
+
+-- Stored Procedure to DELETE data
+CREATE OR REPLACE PROCEDURE SP_DELETE_SAMPLE_DATA (
+    p_id IN NUMBER
+)
+AS
+BEGIN
+    DELETE FROM SAMPLE_DATA
+    WHERE ID = p_id;
+    
+    COMMIT;
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        RAISE;
+END;
+/
+
+-- Stored Procedure to SELECT all data
+CREATE OR REPLACE PROCEDURE SP_GET_ALL_SAMPLE_DATA (
+    o_cursor OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN o_cursor FOR
+        SELECT ID, NAME, DESCRIPTION, CREATED_DATE, UPDATED_DATE
+        FROM SAMPLE_DATA
+        ORDER BY ID;
+END;
+/
+
+-- Stored Procedure to SELECT data by ID
+CREATE OR REPLACE PROCEDURE SP_GET_SAMPLE_DATA_BY_ID (
+    p_id IN NUMBER,
+    o_cursor OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN o_cursor FOR
+        SELECT ID, NAME, DESCRIPTION, CREATED_DATE, UPDATED_DATE
+        FROM SAMPLE_DATA
+        WHERE ID = p_id;
+END;
+/

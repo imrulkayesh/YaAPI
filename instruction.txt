@@ -1,0 +1,50 @@
+make sure you put my name in different pages as the developer 
+
+My name is Sheikh Asad Quadir
+mainly keep my signature
+
+
+
+Connection Info: 
+
+USERNAME: PRIOJON
+password: priojon 
+HOST: 172.17.2.131 
+Port: 1521 
+Service: PRAN
+
+This is the user table from the database :
+CREATE TABLE PRIOJON.U_USERS
+(
+  ID               INTEGER                      NOT NULL,
+  USER_ID          VARCHAR2(30 CHAR)            NOT NULL,
+  PASSWORD         VARCHAR2(30 CHAR),
+  NAME             VARCHAR2(50 CHAR),
+  STAFF_ID         VARCHAR2(30 CHAR),
+  MOBILE           VARCHAR2(15 CHAR)            NOT NULL,
+  EMAIL            VARCHAR2(30 CHAR),
+  DIVITION_ID      VARCHAR2(30 CHAR)            NOT NULL,
+  DISTRICT_ID      VARCHAR2(30 CHAR)            NOT NULL,
+  THANA_ID         VARCHAR2(30 CHAR)            NOT NULL,
+  ADDRESS          VARCHAR2(100 CHAR),
+  NID              VARCHAR2(20 CHAR),
+  USER_TYPE_ID     VARCHAR2(30 CHAR),
+  USER_IMAGE_PATH  VARCHAR2(150 CHAR),
+  FB_TOKEN         VARCHAR2(150 CHAR),
+  APPROVE_STATUS   VARCHAR2(1 CHAR),
+  APPROVE_BY       VARCHAR2(30 CHAR),
+  CDT              DATE                         DEFAULT SYSDATE,
+  UDT              DATE                         DEFAULT NULL,
+  CDU              VARCHAR2(30 CHAR),
+  UDU              VARCHAR2(30 CHAR),
+  GROUP_ID         VARCHAR2(15 CHAR),
+  ACT              NUMBER                       DEFAULT 1,
+  BU_ID            VARCHAR2(15 CHAR)
+)
+
+I want you to update the code based on the user table i just give you. in here is not hris system so no problem directly use databse 
+password and the password store directly no problem also give me stript where all jwt and refresh token related table needed 
+rename it more genaral . after then make a 
+table where you will do full croud operation but using store procedure using store procedure i need data to i meand get fata too.
+
+give full sql in a single file 
